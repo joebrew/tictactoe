@@ -64,4 +64,3 @@ score <- function(board = mat){
    return(output)
 
 }
-score()
