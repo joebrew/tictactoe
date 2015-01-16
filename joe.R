@@ -19,11 +19,17 @@ joe <- function(board = mat,
     stop("Provide a complete previous move")
   }
   
-  # Make random first move if no last move
+  # Make  first move if no last move
   if(is.null(last_x)){
-    # Make move
+    
+    # Make random first move
     x <- sample(1:9, size = 1)
     y <- sample(1:9, size = 1)
+    
+    # Move to the very center
+    x <- 5
+    y <- 5
+    
   } else {
     
     # Define which area is legal
