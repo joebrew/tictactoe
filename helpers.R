@@ -8,14 +8,14 @@ visualize <- function(board = mat,
   points(x = rep(1:9, each =9),
          y = rep(9:1, 9),
          col = adjustcolor(ifelse(board == 1, joe_color, ifelse(board == 2, yoni_color, "grey")), 
-                           alpha.f = 0.5),
+                           alpha.f = 0.3),
          pch = ifelse(board == 1, "X", ifelse(board == 2, "O", "")),
          cex = 3)  
   
   text(x = rep(1:9, each =9),
        y = rep(9:1, 9), 
        labels = ifelse(board == 1, "joe", ifelse(board == 2, "yoni", "")),
-       col = adjustcolor("black", alpha.f = 0.5))
+       col = adjustcolor("black", alpha.f = 0.3))
 
 
   

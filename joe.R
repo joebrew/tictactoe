@@ -11,8 +11,7 @@ joe <- function(board = mat,
   
   # Extract last move from moves
   last_move <- moves[nrow(moves),]
-  last_x <- last_move$x
-  last_y <- last_move$y
+
   
   # Make sure both a last_x and last_y are supplied (or neither)
   if(is.null(last_x) != is.null(last_y)){
@@ -20,17 +19,22 @@ joe <- function(board = mat,
   }
   
   # Make  first move if no last move
-  if(is.null(last_x)){
+  if(nrow(moves) < 1){
     
     # Make random first move
-    x <- sample(1:9, size = 1)
-    y <- sample(1:9, size = 1)
+#     x <- sample(1:9, size = 1)
+#     y <- sample(1:9, size = 1)
     
     # Move to the very center
     x <- 5
     y <- 5
     
   } else {
+    
+    # Get last_x and last_y from last_move
+      last_x <- last_move$x
+      last_y <- last_move$y
+    
     
     # Define which area is legal
     x_zone <- last_x %% 3
@@ -46,10 +50,12 @@ joe <- function(board = mat,
       # Subset the matrix
       zone <- board[x_zone, y_zone]
       
-      # Make move
-      x <- sample(x_zone, size = 1)
-      y <- sample(y_zone, size = 1)
-      
+      # Make move to middle if possible
+#       x <- sample(x_zone, size = 1)
+#       y <- sample(y_zone, size = 1)
+        x <- x_zone[2]
+        y <- y_zone[2]
+
       # Remake move if it's already occupied
       while(board[x,y] != 0){
         x <- sample(x_zone, size = 1)
@@ -57,9 +63,12 @@ joe <- function(board = mat,
       }
       
     } else {
-      # Redefine x zone and y zone to include whole board
-      x_zone <- 1:9
-      y_zone <- 1:9
+      
+      # Move anywhere
+
+      # Try to get the center of another square
+      x_zone <- c(2, 5, 8)
+      y_zone <- c(2, 5, 8)
       
       # Make move
       x <- sample(x_zone, size = 1)
@@ -67,8 +76,15 @@ joe <- function(board = mat,
       
       # Remake move if it's already occupied
       while(board[x,y] != 0){
+
+        # Redefine x zone and y zone to include whole board
+        x_zone <- 1:9
+        y_zone <- 1:9
+        
+        # Make move
         x <- sample(x_zone, size = 1)
         y <- sample(y_zone, size = 1)
+        
       }
     }    
   }

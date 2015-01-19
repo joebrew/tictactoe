@@ -19,18 +19,18 @@ if(first == "joe"){
   functions <- list(yoni, joe)
 }
 
-x11()
+#x11()
 #visualize()
 while(length(mat[which(mat == 0)]) > 0 & nrow(moves) < 81){
   new_move <- update_board(functions[[1]])
   mat <- new_move$mat
   moves <- new_move$moves
-  visualize() ; Sys.sleep(0.01)
+  #visualize() #; Sys.sleep(0.01)
   if(nrow(moves) < 81){
     new_move <- update_board(functions[[2]])
     mat <- new_move$mat
     moves <- new_move$moves
-    visualize(); Sys.sleep(0.01)
+    #visualize() #; Sys.sleep(0.01)
   }
   
 }

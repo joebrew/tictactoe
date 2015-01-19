@@ -42,7 +42,21 @@ score <- function(board = mat){
              labels = paste("Joe:", points_joe, "\n",
                             "Yoni:", points_yoni),
              cex = 2.5,
-             col = adjustcolor("darkred", alpha.f = 0.8))        
+             col = adjustcolor("darkred", alpha.f = 0.3))  
+        
+        
+        
+        points(x = j[2],
+               y = 10 - i[2],
+               cex = 10,
+               pch = ifelse(points_joe > points_yoni, "X",
+                            ifelse(points_yoni > points_joe, "O",
+                                   24)),
+               col = adjustcolor(ifelse(points_joe > points_yoni, "darkgreen",
+                            ifelse(points_yoni > points_joe, "darkblue",
+                                   "darkorange")), alpha.f = 0.6)
+               )
+        
       }
     }
 
